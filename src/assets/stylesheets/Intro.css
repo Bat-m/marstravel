@@ -68,10 +68,10 @@
 /* Animations */
 @keyframes orbit {
   0% {
-    transform: rotateZ(0deg);
+    transform: rotateZ(165deg);
   }
   100% {
-    transform: rotateZ(-360deg);
+    transform: rotateZ(-195deg);
   }
 }
 
@@ -105,7 +105,7 @@
   margin-left: -3.75em;
 }
 #saturne.orbit {
-  animation-duration: 36.5s;
+  animation-duration: 58.5s;
 }
 #saturne {
   font-size: 2.7em;
@@ -127,7 +127,7 @@
   margin-left: -100em;
 }
 #pluton.orbit {
-  animation-duration: 68.7s;
+  animation-duration: 85.7s;
 }
 #pluton {
   font-size: 0.2em;
@@ -141,4 +141,42 @@
 }
 #universe {
   background-color: #000000b3;
+}
+
+/* SVG */
+
+svg {
+  top: 0;
+  width: 900px;
+  height: 900px;
+}
+
+#path {
+  fill: transparent;
+  stroke: #555;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  /* transform: translate(387px, 422px); */
+}
+image {
+  width: 50px;
+  height: 50px;
+}
+
+/* SVG */
+
+.svg-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.svg-content {
+  display: inline-block;
+  position: relative;
+
+  margin: auto;
 }
