@@ -1,189 +1,130 @@
-.orbit {
-  pointer-events: none;
-}
-
-/* .planet {
-  cursor: url("../img/cursor.png"), auto;
-  pointer-events: stroke;
-  filter: grayscale(100%);
-  transition: 0.5s;
-} */
-
-.planet:hover {
-  filter: grayscale(0%);
-  transition: 0.5s;
-}
-
-#universe {
-  position: absolute;
+.container-fusee {
   overflow: hidden;
-  width: 100%;
-  height: 100%;
-  background-position: center 40%;
-  background-repeat: no-repeat;
-  background-size: cover;
+  height: 100vh;
+  width: 100vw;
 }
-
-#sun,
-.planet {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  /* width: 0.5em;
-  height: 0.5em;
-  margin-top: -0.25em;
-  margin-left: -0.25em; */
-  width: 100px;
+#fuseenop {
+  opacity: 0;
+  perspective: 400px;
+}
+#fuseeKiDecol {
+  width: 60px;
   height: 100px;
-  margin-top: -45px;
-  margin-left: -45px;
+  transform-style: preserve-3d;
+  transform: rotateX(15deg) translateY(550px);
+  animation: slidein 20s;
+  animation-play-state: paused;
+}
+
+.commeTuVeux {
+  animation: slidein 36s;
+}
+
+@keyframes slidein {
+  from {
+    opacity: 1;
+    transform-style: preserve-3d;
+    transform: rotateX(15deg) translateY(550px);
+  }
+
+  to {
+    opacity: 1;
+    transform-style: preserve-3d;
+    transform: rotateX(15deg) translateY(-1000px);
+  }
+}
+
+.redbutton {
+  z-index: 2;
+  height: 20vh;
+  width: 20vh;
   border-radius: 50%;
+  border: none;
+  transition: transform 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(115, 0, 0);
+  background: radial-gradient(
+    circle,
+    rgba(115, 0, 0, 1) 0%,
+    rgba(255, 0, 0, 1) 70%,
+    rgba(207, 22, 22, 1) 84%,
+    rgba(255, 104, 104, 1) 100%
+  );
 }
 
-#sun {
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: inherit;
-}
-
-.planet {
-  background-color: #202020;
-  background-repeat: no-repeat;
-  background-size: cover;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-.orbit {
+.redbutton-shadow {
+  z-index: 1;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  height: 20vh;
+  width: 20vh;
+  transform: translateY(1vh);
   border-radius: 50%;
-  /* border: 1px solid rgba(255, 255, 255, 0.33); */
-  animation-name: orbit;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+  border: 1px solid rgb(50, 50, 50);
+  background-color: darkred;
 }
 
-/* Animations */
-@keyframes orbit {
+.redbutton:active {
+  transform: translateY(1vh);
+  transition: transform 0.2s;
+}
+
+.redbutton:focus {
+  outline: 0;
+}
+
+.launch {
+  color: white;
+  font-weight: bold;
+  font-size: 4vh;
+  transform: perspective(280px) rotateX(10deg);
+  -webkit-text-stroke: 1px darkred;
+}
+
+.button-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.takeoffplanet {
+  position: absolute;
+  top: 66vh;
+  width: 100%;
+  height: 34%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+#testnop {
+  position: relative;
+  top: 10vh;
+  width: 800px;
+  height: 800px;
+  opacity: 0;
+  background-image: url(../img/earth_cartoon_2-removebg-preview.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation-name: earthRotate;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: 10s;
+  margin: 0 auto;
+}
+
+@keyframes earthRotate {
   0% {
-    transform: rotateZ(165deg);
+    transform: rotateZ(0deg);
   }
   100% {
-    transform: rotateZ(-195deg);
+    transform: rotateZ(360deg);
   }
-}
-
-/* TERRE */
-
-.terre {
-  background-color: blue;
-  background-image: url(../img/Terre.png);
-  width: 65px;
-  height: 65px;
-}
-
-/* MARS */
-
-.mars {
-  background-color: red;
-  background-image: url(../img/Mars.png);
-  width: 50px;
-  height: 50px;
-}
-
-/* first */
-#first .planet {
-  left: 50%;
-  top: -0%;
-}
-#first.orbit {
-  width: 7.5em;
-  height: 7.5em;
-  margin-top: -3.75em;
-  margin-left: -3.75em;
-}
-#first.orbit {
-  animation-duration: 62.5s;
-}
-#first {
-  font-size: 2.7em;
-
-  z-index: 10;
-}
-
-#neptune {
-  font-size: 2.5em;
-}
-
-/* second */
-#second .planet {
-  left: 50%;
-  top: 0%;
-}
-#second.orbit {
-  width: 200em;
-  height: 200em;
-  margin-top: -100em;
-  margin-left: -100em;
-}
-#second.orbit {
-  animation-duration: 83.7s;
-}
-#second {
-  font-size: 0.2em;
-}
-
-#sun {
-  font-size: 6em;
-}
-#sun {
-  background-image: url(../img/Soleil.png);
-}
-#universe {
-  background-color: #000000b3;
-}
-
-/* SVG */
-
-svg {
-  top: 0;
-  width: 900px;
-  height: 900px;
-}
-
-#path {
-  fill: transparent;
-  /* stroke: #555; */
-  stroke-width: 4px;
-  stroke-linecap: round;
-  /* transform: translate(387px, 422px); */
-}
-image {
-  width: 50px;
-  height: 50px;
-}
-
-/* SVG */
-
-.svg-container {
-  display: inline-block;
-  position: relative;
-  width: 100%;
-  padding-bottom: 100%;
-  vertical-align: middle;
-  overflow: hidden;
-  z-index: 0;
-}
-
-.svg-content {
-  display: inline-block;
-  position: relative;
-
-  margin: auto;
-}
-
-#spaceship {
-  z-index: 5;
 }

@@ -1,0 +1,272 @@
+.orbit {
+  pointer-events: none;
+}
+
+/* .planet {
+  cursor: url("../img/cursor.png"), auto;
+  pointer-events: stroke;
+  filter: grayscale(100%);
+  transition: 0.5s;
+} */
+
+.planet:hover {
+  filter: grayscale(0%);
+  transition: 0.5s;
+}
+
+#universe {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  /* background-position: center 40%; */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#sun,
+.planet {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  margin-top: -45px;
+  margin-left: -45px;
+  border-radius: 50%;
+}
+
+#sun {
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: inherit;
+}
+
+.planet {
+  background-color: #202020;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  /* border: 1px solid rgba(255, 255, 255, 0.33); */
+  animation-name: orbit;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+/* Animations */
+@keyframes orbit {
+  0% {
+    transform: rotateZ(165deg);
+  }
+  100% {
+    transform: rotateZ(-195deg);
+  }
+}
+
+/* TERRE */
+
+.terre {
+  background-color: blue;
+  background-image: url(../img/Terre.png);
+  width: 65px;
+  height: 65px;
+}
+
+/* MARS */
+
+.mars {
+  background-color: red;
+  background-image: url(../img/Mars.png);
+  width: 50px;
+  height: 50px;
+}
+
+/* first */
+#first .planet {
+  left: 50%;
+  top: -0%;
+}
+#first.orbit {
+  width: 7.5em;
+  height: 7.5em;
+  margin-top: -3.75em;
+  margin-left: -3.75em;
+}
+#first.orbit {
+  animation-duration: 62.5s;
+}
+#first {
+  font-size: 2.7em;
+
+  z-index: 10;
+}
+
+#neptune {
+  font-size: 2.5em;
+}
+
+/* second */
+#second .planet {
+  left: 50%;
+  top: 0%;
+}
+#second.orbit {
+  width: 200em;
+  height: 200em;
+  margin-top: -100em;
+  margin-left: -100em;
+}
+#second.orbit {
+  animation-duration: 83.7s;
+}
+#second {
+  font-size: 0.2em;
+}
+
+#sun {
+  font-size: 6em;
+}
+#sun {
+  background-image: url(../img/Soleil.png);
+}
+/* #universe {
+  background-color: #000000b3;
+} */
+
+/* SVG */
+
+svg {
+  top: 0;
+  width: 900px;
+  height: 900px;
+}
+
+#path {
+  fill: transparent;
+  stroke: #555;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  /* transform: translate(387px, 422px); */
+}
+image {
+  width: 80px;
+  height: 80px;
+}
+
+/* SVG */
+
+.svg-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.svg-content {
+  display: inline-block;
+  position: relative;
+
+  margin: auto;
+}
+
+#spaceship {
+  z-index: 5;
+}
+
+#plop {
+  width: 100%;
+  height: 100%;
+}
+
+/* CSS talk bubble */
+.talk-bubble {
+  margin: 40px;
+  display: inline-block;
+  position: relative;
+  width: 500px;
+  height: auto;
+  background-color: lightyellow;
+}
+
+.talktext {
+  font-size: 2em;
+}
+.border {
+  border: 8px solid #666;
+}
+.round {
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+}
+
+/* DEMO-SPECIFIC STYLES */
+.talktext p {
+  color: black;
+  font-family: monospace;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  /* border-right: 0.15em solid orange; The typwriter cursor */
+  white-space: wrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+    height: 0;
+  }
+  to {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* The typewriter cursor effect */
+/* @keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+} */
+
+/*Right triangle, placed bottom left side slightly in*/
+/* .tri-right.border.btm-left-in:before {
+  content: " ";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 30px;
+  right: auto;
+  top: auto;
+  bottom: -40px;
+  border: 20px solid;
+  border-color: #666 transparent transparent #666;
+}
+.tri-right.btm-left-in:after {
+  content: " ";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 38px;
+  right: auto;
+  top: auto;
+  bottom: -20px;
+  border: 12px solid;
+  border-color: lightyellow transparent transparent lightyellow;
+} */
