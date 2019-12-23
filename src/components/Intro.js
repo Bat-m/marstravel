@@ -27,23 +27,25 @@ const Intro = () => {
     });
   }, []);
 
-  const [earth, setEarth] = useState(null);
-
-  // const marsOn = MarsPostion();
+  const marsOn = MarsPostion();
   const callIt = () => {
-    let moveEarth = document.getElementById("terre").getBoundingClientRect();
-    console.log("Updating earth position", moveEarth);
+    let moveSpaceship = document
+      .getElementById("spaceship")
+      .getBoundingClientRect();
+    console.log("Updating spaceship position", moveSpaceship);
+    let moveMars = document.getElementById("mars").getBoundingClientRect();
+    console.log("Updating mars position", moveMars);
   };
-  // console.log("mars is moving...", marsOn);
+  console.log("mars is moving...", marsOn);
   return (
     <div id="universe">
       <div id="sun" onClick={callIt} />
 
-      <div id="saturne" className="orbit">
+      <div id="first" className="orbit">
         <div id="terre" className="planet terre" />
       </div>
 
-      <div id="pluton" className="orbit">
+      <div id="second" className="orbit">
         <div id="mars" className="planet mars" />
       </div>
       <div className="svg-container">
@@ -70,16 +72,26 @@ const Intro = () => {
 export default Intro;
 
 const MarsPostion = () => {
-  const [mars, setMars] = useState(null);
+  const [landingIsOn, setLandingIsOn] = useState(null);
 
   useEffect(() => {
     let interval = setInterval(() => {
-      let move = document.getElementById("mars").getBoundingClientRect();
-      setMars(move);
+      let moveSpaceship = document
+        .getElementById("spaceship")
+        .getBoundingClientRect();
+      let moveMars = document.getElementById("mars").getBoundingClientRect();
+
+      if (
+        Math.round(moveMars.y) === 92 &&
+        Math.round(moveSpaceship.y) === 126
+      ) {
+        console.log("ok");
+        return setLandingIsOn(landingIsOn + 1);
+      }
     }, 2000);
     return () => {
       clearInterval(interval);
     };
   }, []);
-  return mars;
+  return landingIsOn;
 };
