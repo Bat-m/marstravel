@@ -143,11 +143,15 @@
 
 /* SVG */
 
-svg {
+/* svg {
   top: 0;
   width: 900px;
   height: 900px;
-}
+} */
+
+/* .nop {
+  enable-background: new 0 0 512 512;
+} */
 
 #path {
   fill: transparent;
@@ -164,19 +168,29 @@ image {
 /* SVG */
 
 .svg-container {
-  display: inline-block;
+  /* display: inline-block;
   position: relative;
   width: 100%;
   padding-bottom: 100%;
   vertical-align: middle;
-  overflow: hidden;
+  overflow: hidden; */
+  position: relative;
+  height: 100vh;
 }
 
 .svg-content {
-  display: inline-block;
+  /* display: inline-block;
   position: relative;
 
-  margin: auto;
+  margin: auto; */
+  position: absolute;
+  height: 100px;
+  left: 50%;
+  width: 100px;
+  margin-left: -40px;
+  top: 50%;
+  margin-top: -90px;
+  transform: scale(9);
 }
 
 #spaceship {
@@ -193,7 +207,7 @@ image {
   margin: 40px;
   display: inline-block;
   position: relative;
-  width: 500px;
+  width: 300px;
   height: auto;
   background-color: lightyellow;
 }

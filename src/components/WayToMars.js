@@ -70,10 +70,11 @@ const WayToMars = () => {
       <div id="second" className="orbit">
         <div id="mars" className="planet mars" />
       </div>
+
       <div className="svg-container">
         <svg
           version="1.1"
-          viewBox={`${y + 37.0} ${y + 37.0} 900 900`}
+          viewBox="-430 -430 900 900"
           preserveAspectRatio="xMinYMin meet"
           class="svg-content"
         >
@@ -89,10 +90,7 @@ const WayToMars = () => {
             <foreignObject id="plop">
               <div class="talk-bubble tri-right border round btm-left-in">
                 <div class="talktext">
-                  <p>
-                    Now we add a border and it looks like a comic. Uses .border
-                    .round and .btm-left-in
-                  </p>
+                  <p>HOUSTON, Everything looks fine, Mars is on the way !!!</p>
                 </div>
               </div>
             </foreignObject>
@@ -135,4 +133,4 @@ const MarsPostion = () => {
 //           className="svg-content"
 //           width="900"
 //           height="900"
-//           viewBox="-420 -422 900 900"
+// viewBox={`${y + 37.0} ${y + 37.0} 900 900`}
