@@ -15,27 +15,11 @@
 
 #fuseeKiDecol {
   opacity: 0;
-  width: 45px;
-  height: 100px;
+  width: 50px;
+  height: 105px;
   transform-style: preserve-3d;
   transform: rotateX(15deg) translateY(850px);
-  /* animation: slidein 20s;
-  animation-play-state: paused; */
 }
-
-/* @keyframes slidein {
-  from {
-    opacity: 1;
-    transform-style: preserve-3d;
-    transform: rotateX(15deg) translateY(550px);
-  }
-
-  to {
-    opacity: 1;
-    transform-style: preserve-3d;
-    transform: rotateX(15deg) translateY(-1000px);
-  }
-} */
 
 .takeoffplanet {
   position: absolute;
@@ -52,7 +36,7 @@
   width: 800px;
   height: 800px;
   opacity: 0;
-  background-image: url(../img/earth_cartoon.png);
+  background-image: url(../img/earth_cartoon2-removebg-preview.png);
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0 auto;

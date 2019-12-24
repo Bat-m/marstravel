@@ -1,6 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import GifFusee from "../assets/gif/fuseeQuiGalere.gif";
-import { gsap, MotionPathPlugin, TweenMax, TimelineLite } from "gsap/all";
+import { gsap, MotionPathPlugin, TweenMax } from "gsap/all";
+import { Transition } from "react-transition-group";
+import WayToMars from "./WayToMars";
 import "../assets/stylesheets/Intro.css";
 
 const Intro = () => {
@@ -22,7 +24,12 @@ const Intro = () => {
     TweenMax.to("#fuseehop", 1, { opacity: 1 });
     // TweenMax.to("#fuseeKiDecol", 1, { opacity: 1 });
 
-    TweenMax.to("#fuseeKiDecol", 15, { opacity: 10, y: -50 });
+    TweenMax.to("#fuseeKiDecol", 15, {
+      opacity: 10,
+      y: -50,
+      scaleY: -0.1,
+      scaleX: -0.1
+    });
     // setAnimation(gsap.to("#takeoff", 1, { opacity: 1 }));
   }, []);
 
@@ -32,31 +39,6 @@ const Intro = () => {
 
   return (
     <div>
-      <button
-        className="btn btn-info"
-        onClick={() => gsap.globalTimeline.play()}
-      >
-        {!animStart ? "Play" : "Back"}
-      </button>
-      <button
-        className="btn btn-info"
-        onClick={() => gsap.globalTimeline.pause()}
-      >
-        {!pause ? "pause" : "play"}
-      </button>
-      <button
-        className="btn btn-info"
-        onClick={() => gsap.globalTimeline.timeScale(-0.5)}
-      >
-        {!pause ? "retour lent" : "0.5"}
-      </button>
-      <button
-        className="btn btn-info"
-        onClick={() => gsap.globalTimeline.timeScale(0.5)}
-      >
-        {!pause ? "avance lent" : "0.5"}
-      </button>
-
       {/* Debut intro */}
       <div className="intro-container">
         {/* Debut decollage fusee */}
@@ -68,6 +50,10 @@ const Intro = () => {
           <div id="takeoff" />
         </div>
       </div>
+
+      <Transition in={true} timeout={150}>
+        <WayToMars />
+      </Transition>
     </div>
   );
 };

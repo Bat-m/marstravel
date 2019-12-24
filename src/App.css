@@ -40,3 +40,9 @@
 #intro-bg {
   background-image: url(./assets/img/bg.png);
 }
+.control {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
