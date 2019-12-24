@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../assets/stylesheets/WayToMars.css";
 import rocket from "../assets/gif/fuseeQuiGalere.gif";
-import { gsap, MotionPathPlugin } from "gsap/all";
+import { gsap, MotionPathPlugin, TweenMax } from "gsap/all";
 
 const WayToMars = () => {
   //register the plugin (just once)
@@ -12,7 +12,7 @@ const WayToMars = () => {
 
   gsap.registerPlugin(MotionPathPlugin);
   useEffect(() => {
-    gsap.set("#spaceship", {
+    TweenMax.set("#spaceship", {
       xPercent: -50,
       yPercent: -50,
       transformOrigin: "50% 50%",
@@ -20,7 +20,7 @@ const WayToMars = () => {
       autoAlpha: 1
     });
 
-    gsap.to("#spaceship", {
+    TweenMax.to("#spaceship", {
       duration: 40,
       ease: "power1.inOut",
       immediateRender: true,
@@ -30,7 +30,7 @@ const WayToMars = () => {
       }
     });
 
-    gsap.set("#bubbleship", {
+    TweenMax.set("#bubbleship", {
       xPercent: -40,
       yPercent: -40,
       transformOrigin: "50% 50%",
@@ -52,16 +52,16 @@ const WayToMars = () => {
   // if (marsOn === 1) {
   //   document.getElementById("spaceship").style.opacity = 0;
   // }
-  const callIt = () => {
-    let moveSpaceship = document
-      .getElementById("spaceship")
-      .getBoundingClientRect();
-    let moveMars = document.getElementById("mars").getBoundingClientRect();
-  };
+  // const callIt = () => {
+  //   let moveSpaceship = document
+  //     .getElementById("spaceship")
+  //     .getBoundingClientRect();
+  //   let moveMars = document.getElementById("mars").getBoundingClientRect();
+  // };
   console.log("mars is moving...", marsOn);
   return (
     <div id="universe">
-      <div id="sun" onClick={callIt} />
+      <div id="sun" />
 
       <div id="first" className="orbit">
         <div id="terre" className="planet terre" />
