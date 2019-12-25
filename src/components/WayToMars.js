@@ -76,7 +76,7 @@ const WayToMars = () => {
           version="1.1"
           viewBox="-430 -430 900 900"
           preserveAspectRatio="xMinYMin meet"
-          class="svg-content"
+          className="svg-content"
         >
           <path
             id="path"
@@ -88,8 +88,8 @@ const WayToMars = () => {
           </g>
           <g id="bubbleship">
             <foreignObject id="plop">
-              <div class="talk-bubble tri-right border round btm-left-in">
-                <div class="talktext">
+              <div className="talk-bubble tri-right border round btm-left-in">
+                <div className="talktext">
                   <p>HOUSTON, Everything looks fine, Mars is on the way !!!</p>
                 </div>
               </div>

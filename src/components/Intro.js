@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import GifFusee from "../assets/gif/fuseeQuiGalere.gif";
-import { gsap, MotionPathPlugin, TweenMax } from "gsap/all";
+import { gsap, MotionPathPlugin, TweenMax, TimelineMax } from "gsap/all";
 import { Transition } from "react-transition-group";
 import WayToMars from "./WayToMars";
 import "../assets/stylesheets/Intro.css";
 
-const Intro = () => {
+const Intro = ({ ctrl }) => {
+  console.log(ctrl);
   gsap.registerPlugin(MotionPathPlugin);
-  // const tl = useRef(gsap.timeline({ paused: true }));
+  const tl = gsap.timeline();
   const [animStart, setAnimStart] = useState(false);
   const [pause, setPause] = useState(false);
 
@@ -20,23 +21,31 @@ const Intro = () => {
   };
 
   useEffect(() => {
-    TweenMax.to("#takeoff", 20, { opacity: 10, rotation: 360 });
-    TweenMax.to("#fuseehop", 1, { opacity: 1 });
-    // TweenMax.to("#fuseeKiDecol", 1, { opacity: 1 });
-
-    TweenMax.to("#fuseeKiDecol", 15, {
-      opacity: 10,
-      y: -50,
-      scaleY: -0.1,
-      scaleX: -0.1
-    });
+    tl.set("#takeoff", {
+      autoAlpha: 1
+    })
+      .to("#takeoff", {
+        rotation: 360,
+        duration: 3,
+        repeat: -1,
+        ease: "linear"
+      })
+      .set("#fuseehop", { autoAlpha: 1 })
+      .set("#fuseeKiDecol", { autoAlpha: 1 })
+      .to("#fuseeKiDecol", {
+        y: -10,
+        scaleY: -0.1,
+        scaleX: -0.1,
+        duration: 15,
+        onComplete: toggleStartAnim
+      });
     // setAnimation(gsap.to("#takeoff", 1, { opacity: 1 }));
   }, []);
 
   useEffect(() => {
     gsap.globalTimeline.pause();
   }, []);
-
+  console.log(animStart);
   return (
     <div>
       {/* Debut intro */}
@@ -50,9 +59,10 @@ const Intro = () => {
           <div id="takeoff" />
         </div>
       </div>
-
-      <Transition in={true} timeout={150}>
-        <WayToMars />
+      <button onClick={() => setAnimStart(!animStart)}>Click to Enter</button>
+      <Transition in={animStart} timeout={500}>
+        {/* <WayToMars /> */}
+        <button onClick={() => setAnimStart(!animStart)}>Click to Out</button>
       </Transition>
     </div>
   );

@@ -1,33 +1,28 @@
 import React from "react";
 import { gsap } from "gsap/all";
+import "../assets/stylesheets/Control.css";
 
-const Control = () => {
+const Control = ({ ctrl }) => {
   return (
     <div className="control">
-      <button
-        className="btn btn-info"
-        onClick={() => gsap.globalTimeline.play()}
-      >
-        Play
-      </button>
-      <button
-        className="btn btn-info"
-        onClick={() => gsap.globalTimeline.pause()}
-      >
-        Pause
-      </button>
-      <button
-        className="btn btn-info"
+      <span className="btn-green" onClick={() => gsap.globalTimeline.play()}>
+        <div className="play"></div>
+      </span>
+      <span className="btn-red" onClick={() => gsap.globalTimeline.pause()}>
+        <div className="pause"></div>
+      </span>
+      <span
+        className="btn-blue"
         onClick={() => gsap.globalTimeline.timeScale(-0.5)}
       >
-        Backward
-      </button>
-      <button
-        className="btn btn-info"
+        <div className="back"></div>
+      </span>
+      <span
+        className="btn-blue"
         onClick={() => gsap.globalTimeline.timeScale(0.5)}
       >
-        Forward
-      </button>
+        <div className="front"></div>
+      </span>
     </div>
   );
 };
