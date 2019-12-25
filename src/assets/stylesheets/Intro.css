@@ -1,12 +1,15 @@
 .intro-container {
-  opacity: 1;
+  visibility: inherit;
+}
+.intro-container.hidden {
+  visibility: hidden;
 }
 
 .container-fusee {
 }
 
 #fuseehop {
-  opacity: 0;
+  visibility: hidden;
   perspective: 400px;
   overflow: hidden;
   height: 100vh;
@@ -14,11 +17,11 @@
 }
 
 #fuseeKiDecol {
-  opacity: 0;
+  visibility: hidden;
   width: 50px;
   height: 105px;
   transform-style: preserve-3d;
-  transform: rotateX(15deg) translateY(850px);
+  transform: rotateX(15deg) translateY(650px);
 }
 
 .takeoffplanet {
@@ -32,10 +35,10 @@
 
 #takeoff {
   position: relative;
+  visibility: hidden;
   top: 10vh;
   width: 800px;
   height: 800px;
-  opacity: 0;
   background-image: url(../img/earth_cartoon2-removebg-preview.png);
   background-repeat: no-repeat;
   background-size: cover;

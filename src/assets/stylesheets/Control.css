@@ -1,0 +1,121 @@
+.control {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: space-around;
+  height: 40px;
+  padding-top: 25px;
+  background: #ffffff26;
+}
+/* span {
+  margin: 0 10px;
+} */
+.btn-green {
+  background: #0ec518;
+  border: 3px solid #fff;
+  border-radius: 100%;
+  box-shadow: 0 -2px 0 3px #0b9512 inset, 0 5px 5px rgba(0, 7, 1, 0.17),
+    0 15px rgba(255, 255, 255, 0.25) inset;
+  cursor: pointer;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -20px;
+}
+
+.btn-red {
+  background: #e53030;
+  border: 3px solid #fff;
+  border-radius: 100%;
+  box-shadow: 0 -2px 0 3px #e53030 inset, 0 5px 5px rgba(0, 7, 1, 0.17),
+    0 15px rgba(255, 255, 255, 0.25) inset;
+  cursor: pointer;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -20px;
+}
+
+.btn-blue {
+  background: #108fe8;
+  border: 3px solid #fff;
+  border-radius: 100%;
+  box-shadow: 0 -2px 0 3px #108fe8 inset, 0 5px 5px rgba(0, 7, 1, 0.17),
+    0 15px rgba(255, 255, 255, 0.25) inset;
+  cursor: pointer;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -20px;
+}
+
+.btn-green:hover,
+.btn-red:hover,
+.btn-blue:hover {
+  background: #333;
+  box-shadow: 0 -2px 0 3px #1a1a1a inset, 0 5px 5px rgba(0, 0, 0, 0.17),
+    0 15px rgba(255, 255, 255, 0.32) inset;
+}
+/* .button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {
+  background-color: #3e8e41;
+}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+} */
+
+.play {
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-left: 12px solid rgb(255, 255, 255);
+  border-bottom: 8px solid transparent;
+}
+.pause {
+  width: 4px;
+  height: 16px;
+  border-right: 4px solid rgb(255, 255, 255);
+  border-left: 4px solid rgb(255, 255, 255);
+}
+
+.back {
+  width: 8px;
+  height: 8px;
+  border: 2px solid;
+  border-color: rgb(255, 255, 255) transparent transparent rgb(255, 255, 255);
+  transform: rotate(-45deg);
+}
+
+.front {
+  width: 8px;
+  height: 8px;
+  border: 2px solid;
+  border-color: rgb(255, 255, 255) transparent transparent rgb(255, 255, 255);
+  transform: rotate(135deg);
+}
