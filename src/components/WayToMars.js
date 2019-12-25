@@ -3,13 +3,15 @@ import "../assets/stylesheets/WayToMars.css";
 import rocket from "../assets/gif/fuseeQuiGalere.gif";
 import { gsap, MotionPathPlugin, TweenMax } from "gsap/all";
 
-const WayToMars = () => {
+const WayToMars = props => {
   //register the plugin (just once)
-
-  var x = window.innerWidth / 2;
-  var y = -Math.abs(window.innerHeight / 2);
-  console.log(x, y);
-
+  console.log(props.changeState);
+  // var x = window.innerWidth / 2;
+  // var y = -Math.abs(window.innerHeight / 2);
+  // console.log(x, y);
+  const reverted = () => {
+    props.changeState();
+  };
   gsap.registerPlugin(MotionPathPlugin);
   useEffect(() => {
     TweenMax.set("#spaceship", {
@@ -23,7 +25,7 @@ const WayToMars = () => {
     TweenMax.to("#spaceship", {
       duration: 40,
       ease: "power1.inOut",
-      immediateRender: true,
+      onReverseComplete: reverted,
       motionPath: {
         path: "#path",
         autoRotate: 90
@@ -46,7 +48,7 @@ const WayToMars = () => {
         path: "#path"
       }
     });
-  }, []);
+  });
 
   const marsOn = MarsPostion();
   // if (marsOn === 1) {
@@ -123,7 +125,7 @@ const MarsPostion = () => {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  });
   return landingIsOn;
 };
 

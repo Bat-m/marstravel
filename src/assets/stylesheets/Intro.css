@@ -1,5 +1,8 @@
 .intro-container {
-  opacity: 1;
+  visibility: inherit;
+}
+.intro-container.hidden {
+  visibility: hidden;
 }
 
 .container-fusee {

@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from "react";
 import GifFusee from "../assets/gif/fuseeQuiGalere.gif";
-import { gsap, MotionPathPlugin, TweenMax, TimelineMax } from "gsap/all";
-import { Transition } from "react-transition-group";
+import { gsap, MotionPathPlugin } from "gsap/all";
 import WayToMars from "./WayToMars";
 import "../assets/stylesheets/Intro.css";
 
-const Intro = ({ ctrl }) => {
-  console.log(ctrl);
-  gsap.registerPlugin(MotionPathPlugin);
-  const tl = gsap.timeline();
+const Intro = () => {
+  let currentTimeScale;
   const [animStart, setAnimStart] = useState(false);
-  const [pause, setPause] = useState(false);
+  gsap.registerPlugin(MotionPathPlugin);
+  const takeTime = () => {
+    currentTimeScale = gsap.globalTimeline.time();
+    // console.log("runtime: ", currentTimeScale.toFixed(2));
+    // console.log(animStart);
+    // if (animStart && currentTimeScale.toFixed(2) < 17.0) {
+    //   console.log("if: ", currentTimeScale.toFixed(2));
+
+    //   console.log("if stop:", animStart);
+    // }
+  };
+  const tl = gsap.timeline({ onUpdate: takeTime });
 
   const toggleStartAnim = () => {
     setAnimStart(!animStart);
-  };
-
-  const togglePause = () => {
-    setPause(!pause);
   };
 
   useEffect(() => {
@@ -39,31 +43,32 @@ const Intro = ({ ctrl }) => {
         duration: 15,
         onComplete: toggleStartAnim
       });
-    // setAnimation(gsap.to("#takeoff", 1, { opacity: 1 }));
-  }, []);
+  });
 
   useEffect(() => {
     gsap.globalTimeline.pause();
   }, []);
-  console.log(animStart);
+
   return (
     <div>
       {/* Debut intro */}
-      <div className="intro-container">
+      <div className={`intro-container${!animStart ? "" : " hidden"}`}>
         {/* Debut decollage fusee */}
         <div id="fuseehop" className="container-fusee">
-          <img id="fuseeKiDecol" className="container-fusee" src={GifFusee} />
+          <img
+            alt="fuseekidecol"
+            id="fuseeKiDecol"
+            className="container-fusee"
+            src={GifFusee}
+          />
         </div>
         {/* Debut rotation terre */}
         <div className="takeoffplanet">
           <div id="takeoff" />
         </div>
       </div>
-      <button onClick={() => setAnimStart(!animStart)}>Click to Enter</button>
-      <Transition in={animStart} timeout={500}>
-        {/* <WayToMars /> */}
-        <button onClick={() => setAnimStart(!animStart)}>Click to Out</button>
-      </Transition>
+
+      {animStart && <WayToMars changeState={toggleStartAnim} />}
     </div>
   );
 };

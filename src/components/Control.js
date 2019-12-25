@@ -13,13 +13,13 @@ const Control = ({ ctrl }) => {
       </span>
       <span
         className="btn-blue"
-        onClick={() => gsap.globalTimeline.timeScale(-0.5)}
+        onClick={() => gsap.globalTimeline.timeScale(2.5)}
       >
         <div className="back"></div>
       </span>
       <span
         className="btn-blue"
-        onClick={() => gsap.globalTimeline.timeScale(0.5)}
+        onClick={() => gsap.globalTimeline.timeScale(2.5)}
       >
         <div className="front"></div>
       </span>

@@ -15,10 +15,10 @@
 }
 
 #universe {
-  position: relative;
+  /* position: relative; */
   overflow: hidden;
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   /* background-position: center 40%; */
   background-repeat: no-repeat;
   background-size: cover;
@@ -137,25 +137,10 @@
 #sun {
   background-image: url(../img/Soleil.png);
 }
-/* #universe {
-  background-color: #000000b3;
-} */
-
-/* SVG */
-
-/* svg {
-  top: 0;
-  width: 900px;
-  height: 900px;
-} */
-
-/* .nop {
-  enable-background: new 0 0 512 512;
-} */
 
 #path {
   fill: transparent;
-  stroke: #555;
+  /* stroke: #555; */
   stroke-width: 4px;
   stroke-linecap: round;
   /* transform: translate(387px, 422px); */
@@ -174,8 +159,8 @@ image {
   padding-bottom: 100%;
   vertical-align: middle;
   overflow: hidden; */
-  position: relative;
-  height: 100vh;
+  /* position: relative; */
+  /* height: 100vh; */
 }
 
 .svg-content {
