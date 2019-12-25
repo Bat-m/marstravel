@@ -1,16 +1,19 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import Intro from "./components/Intro";
-import Infos from "./components/Infos";
+import WayToMars from "./components/WayToMars";
 
-function App() {
+import Intro from "./components/Intro";
+import Control from "./components/Control";
+
+const App = () => {
   return (
-    <div className="App">
+    <div className="App" id="intro-bg">
+      <Control />
       <Intro />
-      {/* <Infos /> */}
+
+      {/* <WayToMars /> */}
     </div>
   );
-}
+};
 
 export default App;
