@@ -1,69 +1,71 @@
 import React, { useEffect } from "react";
 import "../assets/stylesheets/WayToMars.css";
 import rocket from "../assets/gif/spaceship.gif";
-import { gsap, MotionPathPlugin, TweenMax } from "gsap/all";
+import { TweenMax } from "gsap/all";
 
-const WayToMars = ({ changeState, animStart }) => {
+const WayToMars = ({ tl, changeState, animStart }) => {
   // var x = window.innerWidth / 2;
   // var y = -Math.abs(window.innerHeight / 2);
   // console.log(x, y);
 
   const reverted = () => {
     changeState();
+
     console.log("reverted ok");
   };
-  gsap.registerPlugin(MotionPathPlugin);
+
   useEffect(() => {
     if (animStart) {
-      gsap.to("#takeoff", {
+      tl.to("#takeoff", {
         autoAlpha: 0
       });
-      TweenMax.set("#spaceship", {
+      tl.set("#spaceship", {
         xPercent: -50,
         yPercent: -50,
         transformOrigin: "50% 50%",
         scale: 0.5,
         autoAlpha: 1
-      });
-
-      TweenMax.to("#spaceship", {
-        duration: 40,
-        ease: "power1.inOut",
-        onReverseComplete: reverted,
-        motionPath: {
-          path: "#path",
-          autoRotate: 90
-        }
-      });
-
-      TweenMax.set("#bubbleship", {
-        xPercent: -40,
-        yPercent: -40,
-        transformOrigin: "50% 50%",
-        scale: 0.5,
-        autoAlpha: 1
-      });
-
-      TweenMax.to("#bubbleship", {
-        duration: 40,
-        ease: "power1.inOut",
-        motionPath: {
-          path: "#path"
-        }
-      });
-      TweenMax.set(".orbit", {
-        rotation: 165
-      });
-      TweenMax.to("#first.orbit", {
-        duration: 62.5,
-        rotation: -195,
-        ease: "linear"
-      });
-      TweenMax.to("#second.orbit", {
-        duration: 83.7,
-        rotation: -195,
-        ease: "linear"
-      });
+      })
+        .set("#bubbleship", {
+          xPercent: -40,
+          yPercent: -40,
+          transformOrigin: "50% 50%",
+          scale: 0.5,
+          autoAlpha: 1
+        })
+        .set(".orbit", {
+          rotation: 165
+        })
+        .to("#spaceship", {
+          duration: 40,
+          ease: "power1.inOut",
+          onComplete: () => console.log("done"),
+          onReverseComplete: reverted,
+          motionPath: {
+            path: "#path",
+            align: "#path",
+            autoRotate: 90,
+            start: 0,
+            end: 1
+          }
+        })
+        .to("#bubbleship", {
+          duration: 40,
+          ease: "power1.inOut",
+          motionPath: {
+            path: "#path"
+          }
+        })
+        .to("#first.orbit", {
+          duration: 62.5,
+          rotation: -195,
+          ease: "linear"
+        })
+        .to("#second.orbit", {
+          duration: 83.7,
+          rotation: -195,
+          ease: "linear"
+        });
     }
   });
 

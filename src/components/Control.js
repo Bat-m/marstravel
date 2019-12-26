@@ -16,10 +16,7 @@ const Control = () => {
       <span className="btn-red" onClick={() => gsap.globalTimeline.pause()}>
         <div className="pause"></div>
       </span>
-      <span
-        className="btn-blue"
-        onClick={() => gsap.globalTimeline.timeScale(-2.5)}
-      >
+      <span className="btn-blue" onClick={() => gsap.globalTimeline.reverse()}>
         <div className="back"></div>
       </span>
       <span

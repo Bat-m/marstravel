@@ -15,8 +15,9 @@ const Intro = ({ tl }) => {
   const toggleStopAnim = () => {
     setAnimStart(false);
     gsap.to("#takeoff", {
-      autoAlpha: 1
+      autoAlpha: 0
     });
+    console.log("stopAnim", false);
   };
 
   useEffect(() => {
@@ -66,7 +67,7 @@ const Intro = ({ tl }) => {
         </div>
       </div>
 
-      <WayToMars animStart={animStart} changeState={toggleStopAnim} />
+      <WayToMars tl={tl} animStart={animStart} changeState={toggleStopAnim} />
     </div>
   );
 };
