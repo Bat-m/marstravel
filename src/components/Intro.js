@@ -25,22 +25,25 @@ const Intro = ({ tl }) => {
       .set("#takeoff", {
         autoAlpha: 1
       })
-      .to("#takeoff", 5, {
+      .to("#takeoff", 10, {
         rotation: 360,
-        repeat: -1,
         ease: "linear"
       })
-      .set("#spaceshiphop", { autoAlpha: 1 })
-      .set("#spaceshiptakeoff", { autoAlpha: 1 })
-      .to("#spaceshiptakeoff", {
-        y: -10,
-        scaleY: -0.1,
-        scaleX: -0.1,
-        duration: 10,
-        onComplete: () => {
-          toggleStartAnim();
-        }
-      });
+      .set("#spaceshiphop", { autoAlpha: 1 }, "-=10")
+      .set("#spaceshiptakeoff", { autoAlpha: 1 }, "-=10")
+      .to(
+        "#spaceshiptakeoff",
+        {
+          y: -10,
+          scaleY: -0.1,
+          scaleX: -0.1,
+          duration: 10,
+          onComplete: () => {
+            toggleStartAnim();
+          }
+        },
+        "-=10"
+      );
   });
 
   useEffect(() => {

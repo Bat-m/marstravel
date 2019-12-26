@@ -5,6 +5,7 @@ import "./App.css";
 
 import Intro from "./components/Intro";
 import Control from "./components/Control";
+import { OnMars } from "./components/OnMars";
 
 const App = () => {
   gsap.registerPlugin(MotionPathPlugin);
@@ -12,23 +13,20 @@ const App = () => {
   const takeTime = () => {
     // currentTimeScale = gsap.globalTimeline.time();
     var currentTimeScale = gsap.globalTimeline.timeScale(); //gets current timeScale
-    console.log(currentTimeScale);
   };
   const tl = new TimelineMax({
-    onUpdate: takeTime,
-    yoyo: true,
-    repeat: 1,
-    repeatDelay: 1
+    onUpdate: takeTime
   });
   return (
     <div className="App" id="intro-bg">
-      <BrowserView>
+      <OnMars tl={tl} />
+      {/* <BrowserView>
         <Control tl={tl} />
         <Intro tl={tl} />
       </BrowserView>
       <MobileView>
         <h1> This site only work on desktop for now ;) </h1>
-      </MobileView>
+      </MobileView> */}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "../assets/stylesheets/WayToMars.css";
 import rocket from "../assets/gif/spaceship.gif";
-import { TweenMax } from "gsap/all";
+import { gsap } from "gsap/all";
 
 const WayToMars = ({ tl, changeState, animStart }) => {
   // var x = window.innerWidth / 2;
@@ -16,56 +16,75 @@ const WayToMars = ({ tl, changeState, animStart }) => {
 
   useEffect(() => {
     if (animStart) {
-      tl.to("#takeoff", {
+      tl.set("#takeoff", {
         autoAlpha: 0
-      });
-      tl.set("#spaceship", {
-        xPercent: -50,
-        yPercent: -50,
-        transformOrigin: "50% 50%",
-        scale: 0.5,
-        autoAlpha: 1
       })
-        .set("#bubbleship", {
-          xPercent: -40,
-          yPercent: -40,
-          transformOrigin: "50% 50%",
-          scale: 0.5,
-          autoAlpha: 1
-        })
         .set(".orbit", {
           rotation: 165
         })
-        .to("#spaceship", {
-          duration: 40,
-          ease: "power1.inOut",
-          onComplete: () => console.log("done"),
-          onReverseComplete: reverted,
-          motionPath: {
-            path: "#path",
-            align: "#path",
-            autoRotate: 90,
-            start: 0,
-            end: 1
+        .fromTo(
+          "#spaceship",
+          40,
+          {
+            xPercent: -50,
+            yPercent: -50,
+            transformOrigin: "50% 50%",
+            scale: 0.5,
+            autoAlpha: 1
+          },
+          {
+            duration: 40,
+            ease: "power1.inOut",
+            onComplete: () => console.log("done"),
+            onReverseComplete: reverted,
+            motionPath: {
+              path: "#path",
+              align: "#path",
+              autoRotate: 90
+            },
+            immediateRender: true
           }
-        })
-        .to("#bubbleship", {
-          duration: 40,
-          ease: "power1.inOut",
-          motionPath: {
-            path: "#path"
-          }
-        })
-        .to("#first.orbit", {
-          duration: 62.5,
-          rotation: -195,
-          ease: "linear"
-        })
-        .to("#second.orbit", {
-          duration: 83.7,
-          rotation: -195,
-          ease: "linear"
-        });
+        )
+        .fromTo(
+          "#bubbleship",
+          40,
+          {
+            xPercent: -40,
+            yPercent: -40,
+            transformOrigin: "50% 50%",
+            scale: 0.5,
+            autoAlpha: 1
+          },
+          {
+            duration: 40,
+            ease: "power1.inOut",
+            motionPath: {
+              path: "#path"
+            },
+            immediateRender: true
+          },
+          "-=39.9"
+        )
+
+        .to(
+          "#first.orbit",
+          {
+            duration: 40.25,
+            rotation: -195,
+            ease: "linear"
+          },
+          "-=39"
+        )
+        .to(
+          "#second.orbit",
+          {
+            duration: 33.35,
+            rotation: 8,
+            ease: "linear",
+            onComplete: () => gsap.globalTimeline.pause()
+          },
+          "-=39"
+        );
     }
   });
 
