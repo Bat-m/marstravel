@@ -22,6 +22,11 @@
   /* background-position: center 40%; */
   background-repeat: no-repeat;
   background-size: cover;
+  visibility: hidden;
+}
+
+#universe#hidden {
+  visibility: inherit;
 }
 
 #sun,
@@ -46,8 +51,8 @@
   background-color: #202020;
   background-repeat: no-repeat;
   background-size: cover;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+  /* animation-iteration-count: infinite;
+  animation-timing-function: linear; */
 }
 
 .orbit {
@@ -56,20 +61,20 @@
   left: 50%;
   border-radius: 50%;
   /* border: 1px solid rgba(255, 255, 255, 0.33); */
-  animation-name: orbit;
+  /* animation-name: orbit;
   animation-iteration-count: infinite;
-  animation-timing-function: linear;
+  animation-timing-function: linear; */
 }
 
 /* Animations */
-@keyframes orbit {
+/* @keyframes orbit {
   0% {
     transform: rotateZ(165deg);
   }
   100% {
     transform: rotateZ(-195deg);
   }
-}
+} */
 
 /* TERRE */
 

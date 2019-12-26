@@ -1,47 +1,44 @@
 import React, { useEffect, useState } from "react";
-import GifFusee from "../assets/gif/fuseeQuiGalere.gif";
-import { gsap, MotionPathPlugin } from "gsap/all";
+import Gifspaceship from "../assets/gif/spaceship.gif";
+import { gsap, TimelineMax } from "gsap/all";
 import WayToMars from "./WayToMars";
 import "../assets/stylesheets/Intro.css";
 
-const Intro = () => {
-  let currentTimeScale;
+const Intro = ({ tl }) => {
+  // let currentTimeScale;
   const [animStart, setAnimStart] = useState(false);
-  gsap.registerPlugin(MotionPathPlugin);
-  const takeTime = () => {
-    currentTimeScale = gsap.globalTimeline.time();
-    // console.log("runtime: ", currentTimeScale.toFixed(2));
-    // console.log(animStart);
-    // if (animStart && currentTimeScale.toFixed(2) < 17.0) {
-    //   console.log("if: ", currentTimeScale.toFixed(2));
-
-    //   console.log("if stop:", animStart);
-    // }
-  };
-  const tl = gsap.timeline({ onUpdate: takeTime });
 
   const toggleStartAnim = () => {
-    setAnimStart(!animStart);
+    setAnimStart(true);
+  };
+
+  const toggleStopAnim = () => {
+    setAnimStart(false);
+    gsap.to("#takeoff", {
+      autoAlpha: 1
+    });
   };
 
   useEffect(() => {
-    tl.set("#takeoff", {
-      autoAlpha: 1
-    })
-      .to("#takeoff", {
+    tl.set(".intro-container", { autoAlpha: 1 })
+      .set("#takeoff", {
+        autoAlpha: 1
+      })
+      .to("#takeoff", 5, {
         rotation: 360,
-        duration: 3,
         repeat: -1,
         ease: "linear"
       })
-      .set("#fuseehop", { autoAlpha: 1 })
-      .set("#fuseeKiDecol", { autoAlpha: 1 })
-      .to("#fuseeKiDecol", {
+      .set("#spaceshiphop", { autoAlpha: 1 })
+      .set("#spaceshiptakeoff", { autoAlpha: 1 })
+      .to("#spaceshiptakeoff", {
         y: -10,
         scaleY: -0.1,
         scaleX: -0.1,
-        duration: 15,
-        onComplete: toggleStartAnim
+        duration: 10,
+        onComplete: () => {
+          toggleStartAnim();
+        }
       });
   });
 
@@ -51,24 +48,25 @@ const Intro = () => {
 
   return (
     <div>
-      {/* Debut intro */}
-      <div className={`intro-container${!animStart ? "" : " hidden"}`}>
-        {/* Debut decollage fusee */}
-        <div id="fuseehop" className="container-fusee">
+      {/* Start intro */}
+
+      <div className="intro-container">
+        {/* start takeoff */}
+        <div id="spaceshiphop" className="container-spaceship">
           <img
-            alt="fuseekidecol"
-            id="fuseeKiDecol"
-            className="container-fusee"
-            src={GifFusee}
+            alt="spaceshiptakeoff"
+            id="spaceshiptakeoff"
+            className="container-spaceship"
+            src={Gifspaceship}
           />
         </div>
-        {/* Debut rotation terre */}
+        {/* Stat rotation earth */}
         <div className="takeoffplanet">
           <div id="takeoff" />
         </div>
       </div>
 
-      {animStart && <WayToMars changeState={toggleStartAnim} />}
+      <WayToMars animStart={animStart} changeState={toggleStopAnim} />
     </div>
   );
 };

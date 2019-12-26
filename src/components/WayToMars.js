@@ -1,68 +1,77 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "../assets/stylesheets/WayToMars.css";
-import rocket from "../assets/gif/fuseeQuiGalere.gif";
+import rocket from "../assets/gif/spaceship.gif";
 import { gsap, MotionPathPlugin, TweenMax } from "gsap/all";
 
-const WayToMars = props => {
-  //register the plugin (just once)
-  console.log(props.changeState);
+const WayToMars = ({ changeState, animStart }) => {
   // var x = window.innerWidth / 2;
   // var y = -Math.abs(window.innerHeight / 2);
   // console.log(x, y);
+
   const reverted = () => {
-    props.changeState();
+    changeState();
+    console.log("reverted ok");
   };
   gsap.registerPlugin(MotionPathPlugin);
   useEffect(() => {
-    TweenMax.set("#spaceship", {
-      xPercent: -50,
-      yPercent: -50,
-      transformOrigin: "50% 50%",
-      scale: 0.5,
-      autoAlpha: 1
-    });
+    if (animStart) {
+      gsap.to("#takeoff", {
+        autoAlpha: 0
+      });
+      TweenMax.set("#spaceship", {
+        xPercent: -50,
+        yPercent: -50,
+        transformOrigin: "50% 50%",
+        scale: 0.5,
+        autoAlpha: 1
+      });
 
-    TweenMax.to("#spaceship", {
-      duration: 40,
-      ease: "power1.inOut",
-      onReverseComplete: reverted,
-      motionPath: {
-        path: "#path",
-        autoRotate: 90
-      }
-    });
+      TweenMax.to("#spaceship", {
+        duration: 40,
+        ease: "power1.inOut",
+        onReverseComplete: reverted,
+        motionPath: {
+          path: "#path",
+          autoRotate: 90
+        }
+      });
 
-    TweenMax.set("#bubbleship", {
-      xPercent: -40,
-      yPercent: -40,
-      transformOrigin: "50% 50%",
-      scale: 0.5,
-      autoAlpha: 1
-    });
+      TweenMax.set("#bubbleship", {
+        xPercent: -40,
+        yPercent: -40,
+        transformOrigin: "50% 50%",
+        scale: 0.5,
+        autoAlpha: 1
+      });
 
-    gsap.to("#bubbleship", {
-      duration: 40,
-      ease: "power1.inOut",
-      immediateRender: true,
-      motionPath: {
-        path: "#path"
-      }
-    });
+      TweenMax.to("#bubbleship", {
+        duration: 40,
+        ease: "power1.inOut",
+        motionPath: {
+          path: "#path"
+        }
+      });
+      TweenMax.set(".orbit", {
+        rotation: 165
+      });
+      TweenMax.to("#first.orbit", {
+        duration: 62.5,
+        rotation: -195,
+        ease: "linear"
+      });
+      TweenMax.to("#second.orbit", {
+        duration: 83.7,
+        rotation: -195,
+        ease: "linear"
+      });
+    }
   });
 
-  const marsOn = MarsPostion();
-  // if (marsOn === 1) {
-  //   document.getElementById("spaceship").style.opacity = 0;
-  // }
-  // const callIt = () => {
-  //   let moveSpaceship = document
-  //     .getElementById("spaceship")
-  //     .getBoundingClientRect();
-  //   let moveMars = document.getElementById("mars").getBoundingClientRect();
-  // };
-  console.log("mars is moving...", marsOn);
+  // const marsOn = MarsPostion();
+
+  // console.log("mars is moving...", marsOn);
   return (
-    <div id="universe">
+    <div id={`universe${!animStart ? "" : " hidden"}`}>
       <div id="sun" />
 
       <div id="first" className="orbit">
@@ -105,34 +114,24 @@ const WayToMars = props => {
 
 export default WayToMars;
 
-const MarsPostion = () => {
-  const [landingIsOn, setLandingIsOn] = useState(null);
+// const MarsPostion = () => {
+//   const [landingIsOn, setLandingIsOn] = useState(null);
 
-  useEffect(() => {
-    let interval = setInterval(() => {
-      let moveSpaceship = document
-        .getElementById("spaceship")
-        .getBoundingClientRect();
-      let moveMars = document.getElementById("mars").getBoundingClientRect();
-      // console.log(Math.round(moveMars.y));
-      // console.log(Math.round(moveSpaceship.y));
-      // console.log(Math.round(moveMars.y) === Math.round(moveSpaceship.y));
-      if (Math.round(moveMars.y) === Math.round(moveSpaceship.y)) {
-        console.log("ok");
-        return setLandingIsOn(landingIsOn + 1);
-      }
-    }, 5);
-    return () => {
-      clearInterval(interval);
-    };
-  });
-  return landingIsOn;
-};
+//   useEffect(() => {
+//     let interval = setInterval(() => {
+//       let moveSpaceship = document
+//         .getElementById("spaceship")
+//         .getBoundingClientRect();
+//       let moveMars = document.getElementById("mars").getBoundingClientRect();
 
-// preserveAspectRatio="xMinYMin meet"
-//           x="0"
-//           y="0"
-//           className="svg-content"
-//           width="900"
-//           height="900"
-// viewBox={`${y + 37.0} ${y + 37.0} 900 900`}
+//       if (Math.round(moveMars.y) === Math.round(moveSpaceship.y)) {
+//         console.log("ok");
+//         return setLandingIsOn(landingIsOn + 1);
+//       }
+//     }, 5);
+//     return () => {
+//       clearInterval(interval);
+//     };
+//   });
+//   return landingIsOn;
+// };
