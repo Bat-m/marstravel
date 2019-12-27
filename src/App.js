@@ -8,17 +8,18 @@ import Control from "./components/Control";
 import { OnMars } from "./components/OnMars";
 
 const App = () => {
+  const REACT_VERSION = React.version;
   gsap.registerPlugin(MotionPathPlugin);
-  console.log(gsap.version);
-  const takeTime = () => {
-    // currentTimeScale = gsap.globalTimeline.time();
-    var currentTimeScale = gsap.globalTimeline.timeScale(); //gets current timeScale
-  };
-  const tl = new TimelineMax({
-    onUpdate: takeTime
-  });
+  console.log("gsap: ", gsap.version);
+  console.log("React: ", REACT_VERSION);
+  // const takeTime = () => {
+  //   // currentTimeScale = gsap.globalTimeline.time();
+  //   var currentTimeScale = gsap.globalTimeline.timeScale(); //gets current timeScale
+  // };
+  const tl = new TimelineMax({});
   return (
     <div className="App" id="intro-bg">
+      <Control tl={tl} />
       <OnMars tl={tl} />
       {/* <BrowserView>
         <Control tl={tl} />

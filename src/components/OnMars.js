@@ -6,34 +6,44 @@ import rocket from "../assets/gif/spaceship.gif";
 export const OnMars = ({ tl }) => {
   const [explode, setExplode] = useState(false);
   const [size, setSize] = useState([0, 0]);
+  function updateSize() {
+    setSize([
+      Math.round(window.innerWidth / 2),
+      Math.round(window.innerHeight / 2)
+    ]);
+  }
+  function start() {
+    setExplode(true);
+  }
+  function stop() {
+    setExplode(false);
+  }
+
   useLayoutEffect(() => {
-    function updateSize() {
-      setSize([
-        Math.round(window.innerWidth / 2),
-        Math.round(window.innerHeight / 2)
-      ]);
-    }
     window.addEventListener("resize", updateSize);
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
 
   useEffect(() => {
-    console.log("width: ", size[0], " ", size[0] - 100);
-    console.log("height: ", size[1], " ", size[1] - 100);
-    if (size[1] != 0 && size[0] != 0) {
+    console.log("explode: ", explode);
+    if (size[1] !== 0 && size[0] !== 0) {
       tl.to(".movespaceshiponmars", {
         duration: 8,
-        x: size[0] - 50,
-        y: size[1] - 50,
+        x: size[0] - 80,
+        y: size[1] - 80,
         scaleX: 0.3,
         scaleY: 0.3,
         autoAlpha: 1,
         immediateRender: true,
-        onComplete: () => {
-          setExplode(true);
-        }
-      });
+        onComplete: start
+      })
+        .to(".spaceshiponmars", { duration: 0.1, opacity: 0 })
+        .to(".endtitle", {
+          autoAlpha: 1,
+          duration: 5,
+          onStart: stop
+        });
     }
   });
 
@@ -44,7 +54,7 @@ export const OnMars = ({ tl }) => {
 
         <ParticleEffectButton
           className="movespaceshiponmars"
-          color="#ea602a"
+          color="black"
           hidden={explode}
           type="circle"
           easing="easeOutElastic"
@@ -57,11 +67,12 @@ export const OnMars = ({ tl }) => {
           <button>
             <img
               alt="spaceshiponmars"
-              className="spaceshiponmars"
+              className={`spaceshiponmars`}
               src={rocket}
             />
           </button>
         </ParticleEffectButton>
+        <h1 className="endtitle"> The end </h1>
       </div>
     </div>
   );
