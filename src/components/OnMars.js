@@ -21,8 +21,6 @@ export const OnMars = ({ tl }) => {
     return () => window.removeEventListener("resize", updateSize);
   }, []);
 
-  console.log(size);
-
   useEffect(() => {
     console.log("inside useffect", size);
     if (size[1] !== 0 && size[0] !== 0) {
@@ -49,8 +47,8 @@ export const OnMars = ({ tl }) => {
           onComplete: start
         })
         .set(".spaceshiponmars", {
-          x: size[0] - 80,
-          y: size[1] - 80,
+          x: 0,
+          y: 0,
           opacity: 0
         })
         .to(".endtitle", {
