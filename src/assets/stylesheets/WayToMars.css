@@ -44,6 +44,7 @@
   top: 50%;
   left: 50%;
   border-radius: 50%;
+  visibility: inherit;
 }
 
 /* TERRE */
@@ -93,7 +94,7 @@
 }
 #second.orbit {
   width: 200em;
-  height: 200em;
+  height: 190em;
   margin-top: -100em;
   margin-left: -100em;
 }
@@ -126,7 +127,7 @@ image {
   position: absolute;
   height: 100px;
   left: 50%;
-  width: 100px;
+  width: 105px;
   margin-left: -40px;
   top: 50%;
   margin-top: -90px;
