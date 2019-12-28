@@ -22,7 +22,6 @@ export const OnMars = ({ tl }) => {
   }, []);
 
   useEffect(() => {
-    console.log("inside useffect", size);
     if (size[1] !== 0 && size[0] !== 0) {
       tl.set(".onmars", {
         autoAlpha: 1
@@ -69,8 +68,8 @@ export const OnMars = ({ tl }) => {
         hidden={explode}
         type="circle"
         easing="easeOutElastic"
-        size={4}
-        duration={500}
+        size={3}
+        duration={1000}
         speed={5}
         OscillationCoefficient={0}
         direction="left"

@@ -38,7 +38,7 @@ button {
 }
 
 .movespaceshiponmars {
-  position: absolute;
+  position: absolute !important;
   top: 0;
   left: 0;
   /* animation-name: orbit;
@@ -49,4 +49,9 @@ button {
 
 .endtitle {
   visibility: hidden;
+}
+
+canvas {
+  border-radius: 50%;
+  height: 600px;
 }

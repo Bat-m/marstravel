@@ -34,13 +34,15 @@ const WayToMars = ({ tl, animStart }) => {
           duration: 25.25,
           rotation: -5,
           ease: "linear",
-          immediateRender: true,
-          onComplete: () => {
-            toggleNextAnim();
-          }
+          immediateRender: true
         },
         "-=25"
       )
+      .to([".orbit", "#sun"], {
+        duration: 1,
+        autoAlpha: 0,
+        immediateRender: true
+      })
       .fromTo(
         "#spaceship",
         34.5,
@@ -74,7 +76,10 @@ const WayToMars = ({ tl, animStart }) => {
           transformOrigin: "50% 50%",
           scale: 0.5,
           autoAlpha: 1,
-          immediateRender: true
+          immediateRender: true,
+          onComplete: () => {
+            toggleNextAnim();
+          }
         },
         {
           ease: "power1.inOut",
@@ -85,8 +90,17 @@ const WayToMars = ({ tl, animStart }) => {
         },
         "-=34.5"
       )
+      .to(
+        ["#spaceship", "#bubbleship"],
+        {
+          duration: 1,
+          autoAlpha: 0,
+          immediateRender: true
+        },
+        "-=5"
+      )
 
-      .set(".universe", {
+      .set([".universe"], {
         autoAlpha: 0
       });
   }, [tl, animStart]);
