@@ -1,23 +1,17 @@
 .intro-container {
+  visibility: hidden;
+}
+
+#spaceshiphop {
   visibility: inherit;
-}
-.intro-container.hidden {
-  visibility: hidden;
-}
-
-.container-fusee {
-}
-
-#fuseehop {
-  visibility: hidden;
   perspective: 400px;
   overflow: hidden;
   height: 100vh;
   width: 100vw;
 }
 
-#fuseeKiDecol {
-  visibility: hidden;
+#spaceshiptakeoff {
+  visibility: inherit;
   width: 50px;
   height: 105px;
   transform-style: preserve-3d;
@@ -35,10 +29,10 @@
 
 #takeoff {
   position: relative;
-  visibility: hidden;
+  visibility: inherit;
   top: 10vh;
-  width: 800px;
-  height: 800px;
+  width: 100vw;
+  height: 100vw;
   background-image: url(../img/earth_cartoon2-removebg-preview.png);
   background-repeat: no-repeat;
   background-size: cover;

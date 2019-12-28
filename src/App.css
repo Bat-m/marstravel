@@ -36,7 +36,16 @@
     transform: rotate(360deg);
   }
 }
+h1 {
+  font-family: "Bangers", cursive;
+  color: #ffcc00;
+}
 
 #intro-bg {
   background-image: url(./assets/img/bg.png);
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }

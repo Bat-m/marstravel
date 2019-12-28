@@ -1,49 +1,44 @@
 import React, { useEffect, useState } from "react";
-import GifFusee from "../assets/gif/fuseeQuiGalere.gif";
-import { gsap, MotionPathPlugin } from "gsap/all";
+import Gifspaceship from "../assets/gif/spaceship.gif";
+import { gsap } from "gsap/all";
 import WayToMars from "./WayToMars";
 import "../assets/stylesheets/Intro.css";
 
-const Intro = () => {
-  let currentTimeScale;
+const Intro = ({ tl }) => {
   const [animStart, setAnimStart] = useState(false);
-  gsap.registerPlugin(MotionPathPlugin);
-  const takeTime = () => {
-    currentTimeScale = gsap.globalTimeline.time();
-    // console.log("runtime: ", currentTimeScale.toFixed(2));
-    // console.log(animStart);
-    // if (animStart && currentTimeScale.toFixed(2) < 17.0) {
-    //   console.log("if: ", currentTimeScale.toFixed(2));
 
-    //   console.log("if stop:", animStart);
-    // }
+  const tsa = function toggleStartAnim() {
+    setAnimStart(true);
   };
-  const tl = gsap.timeline({ onUpdate: takeTime });
-
-  const toggleStartAnim = () => {
-    setAnimStart(!animStart);
-  };
-
   useEffect(() => {
-    tl.set("#takeoff", {
-      autoAlpha: 1
-    })
-      .to("#takeoff", {
-        rotation: 360,
-        duration: 3,
-        repeat: -1,
-        ease: "linear"
-      })
-      .set("#fuseehop", { autoAlpha: 1 })
-      .set("#fuseeKiDecol", { autoAlpha: 1 })
-      .to("#fuseeKiDecol", {
-        y: -10,
-        scaleY: -0.1,
-        scaleX: -0.1,
-        duration: 15,
-        onComplete: toggleStartAnim
-      });
-  });
+    if (!animStart) {
+      tl.set(".intro-container", { autoAlpha: 1 })
+
+        .fromTo(
+          "#takeoff",
+          10,
+          { autoAlpha: 1 },
+          {
+            rotation: 360,
+            ease: "linear"
+          }
+        )
+        .set("#spaceshiphop", { autoAlpha: 1 }, "-=10")
+        .set("#spaceshiptakeoff", { autoAlpha: 1 }, "-=10")
+        .to(
+          "#spaceshiptakeoff",
+          {
+            y: -10,
+            scaleY: -0.1,
+            scaleX: -0.1,
+            duration: 10,
+            onComplete: tsa
+          },
+          "-=10"
+        )
+        .to(".intro-container", { autoAlpha: 0 });
+    }
+  }, [tl, animStart]);
 
   useEffect(() => {
     gsap.globalTimeline.pause();
@@ -51,24 +46,25 @@ const Intro = () => {
 
   return (
     <div>
-      {/* Debut intro */}
-      <div className={`intro-container${!animStart ? "" : " hidden"}`}>
-        {/* Debut decollage fusee */}
-        <div id="fuseehop" className="container-fusee">
+      {/* Start intro */}
+
+      <div className="intro-container">
+        {/* start takeoff */}
+        <div id="spaceshiphop" className="container-spaceship">
           <img
-            alt="fuseekidecol"
-            id="fuseeKiDecol"
-            className="container-fusee"
-            src={GifFusee}
+            alt="spaceshiptakeoff"
+            id="spaceshiptakeoff"
+            className="container-spaceship"
+            src={Gifspaceship}
           />
         </div>
-        {/* Debut rotation terre */}
+        {/* Stat rotation earth */}
         <div className="takeoffplanet">
           <div id="takeoff" />
         </div>
       </div>
 
-      {animStart && <WayToMars changeState={toggleStartAnim} />}
+      {animStart && <WayToMars tl={tl} animStart={animStart} />}
     </div>
   );
 };

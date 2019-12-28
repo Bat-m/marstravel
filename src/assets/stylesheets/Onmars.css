@@ -1,0 +1,53 @@
+.onmars.hidden {
+  visibility: hidden;
+}
+
+.onmars {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+#onmarsplanet {
+  visibility: inherit;
+  width: 25vw;
+  height: 25vw;
+  background-image: url(../img/mars_cartoon.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 250px auto 0 auto;
+  border-radius: 50%;
+}
+
+button {
+  width: 120px;
+  height: 120px;
+  border: none;
+  background-color: transparent;
+}
+.spaceshiponmars {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 105px;
+  transform: rotate(110deg);
+  /* visibility: inherit; */
+  opacity: 1;
+}
+
+.movespaceshiponmars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* animation-name: orbit;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; */
+}
+
+.endtitle {
+  visibility: hidden;
+}
