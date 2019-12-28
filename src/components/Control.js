@@ -16,7 +16,7 @@ const Control = () => {
       <span className="btn-red" onClick={() => gsap.globalTimeline.pause()}>
         <div className="pause"></div>
       </span>
-      <span className="btn-blue" onClick={() => gsap.globalTimeline.reverse()}>
+      {/* <span className="btn-blue" onClick={() => gsap.globalTimeline.reverse()}>
         <div className="back"></div>
       </span>
       <span
@@ -25,6 +25,9 @@ const Control = () => {
       >
         <div className="front"></div>
       </span>
+      <span className="btn-blue" onClick={() => gsap.globalTimeline.restart()}>
+        <div className="front"> R</div>
+      </span> */}
     </div>
   );
 };

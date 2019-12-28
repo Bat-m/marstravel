@@ -1,50 +1,44 @@
 import React, { useEffect, useState } from "react";
 import Gifspaceship from "../assets/gif/spaceship.gif";
-import { gsap, TimelineMax } from "gsap/all";
+import { gsap } from "gsap/all";
 import WayToMars from "./WayToMars";
 import "../assets/stylesheets/Intro.css";
 
 const Intro = ({ tl }) => {
-  // let currentTimeScale;
   const [animStart, setAnimStart] = useState(false);
 
-  const toggleStartAnim = () => {
+  const tsa = function toggleStartAnim() {
     setAnimStart(true);
   };
-
-  const toggleStopAnim = () => {
-    setAnimStart(false);
-    gsap.to("#takeoff", {
-      autoAlpha: 0
-    });
-    console.log("stopAnim", false);
-  };
-
   useEffect(() => {
-    tl.set(".intro-container", { autoAlpha: 1 })
-      .set("#takeoff", {
-        autoAlpha: 1
-      })
-      .to("#takeoff", 10, {
-        rotation: 360,
-        ease: "linear"
-      })
-      .set("#spaceshiphop", { autoAlpha: 1 }, "-=10")
-      .set("#spaceshiptakeoff", { autoAlpha: 1 }, "-=10")
-      .to(
-        "#spaceshiptakeoff",
-        {
-          y: -10,
-          scaleY: -0.1,
-          scaleX: -0.1,
-          duration: 10,
-          onComplete: () => {
-            toggleStartAnim();
+    if (!animStart) {
+      tl.set(".intro-container", { autoAlpha: 1 })
+
+        .fromTo(
+          "#takeoff",
+          10,
+          { autoAlpha: 1 },
+          {
+            rotation: 360,
+            ease: "linear"
           }
-        },
-        "-=10"
-      );
-  });
+        )
+        .set("#spaceshiphop", { autoAlpha: 1 }, "-=10")
+        .set("#spaceshiptakeoff", { autoAlpha: 1 }, "-=10")
+        .to(
+          "#spaceshiptakeoff",
+          {
+            y: -10,
+            scaleY: -0.1,
+            scaleX: -0.1,
+            duration: 10,
+            onComplete: tsa
+          },
+          "-=10"
+        )
+        .to(".intro-container", { autoAlpha: 0 });
+    }
+  }, [tl, animStart]);
 
   useEffect(() => {
     gsap.globalTimeline.pause();
@@ -70,7 +64,7 @@ const Intro = ({ tl }) => {
         </div>
       </div>
 
-      <WayToMars tl={tl} animStart={animStart} changeState={toggleStopAnim} />
+      {animStart && <WayToMars tl={tl} animStart={animStart} />}
     </div>
   );
 };

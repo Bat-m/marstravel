@@ -7,17 +7,12 @@
   transition: 0.5s;
 }
 
-#universe {
+.universe {
   overflow: hidden;
   width: 100%;
-
   background-repeat: no-repeat;
   background-size: cover;
   visibility: hidden;
-}
-
-#universe#hidden {
-  visibility: inherit;
 }
 
 #sun,
@@ -72,7 +67,7 @@
 /* first */
 #first .planet {
   left: 50%;
-  top: -0%;
+  top: 0%;
 }
 #first.orbit {
   width: 7.5em;
