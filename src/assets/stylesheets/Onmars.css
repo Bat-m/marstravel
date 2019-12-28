@@ -34,7 +34,6 @@ button {
   width: 50px;
   height: 105px;
   transform: rotate(110deg);
-  /* visibility: inherit; */
   opacity: 1;
 }
 
