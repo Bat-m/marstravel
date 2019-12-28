@@ -21,18 +21,40 @@ const WayToMars = ({ tl, animStart }) => {
         rotation: 165,
         immediateRender: true
       })
+
+      .to("#first.orbit", {
+        duration: 25.25,
+        rotation: -60,
+        ease: "linear",
+        immediateRender: true
+      })
+      .to(
+        "#second.orbit",
+        {
+          duration: 25.25,
+          rotation: -5,
+          ease: "linear",
+          immediateRender: true,
+          onComplete: () => {
+            toggleNextAnim();
+          }
+        },
+        "-=25"
+      )
       .fromTo(
         "#spaceship",
-        40,
+        34.5,
         {
-          xPercent: -50,
+          xPercent: 10,
           yPercent: -50,
           transformOrigin: "50% 50%",
           scale: 0.5,
-          autoAlpha: 0.5,
+          autoAlpha: 1,
           immediateRender: true
         },
         {
+          xPercent: -50,
+          yPercent: -50,
           ease: "power1.inOut",
           motionPath: {
             path: "#path",
@@ -40,11 +62,12 @@ const WayToMars = ({ tl, animStart }) => {
             autoRotate: 90
           },
           immediateRender: true
-        }
+        },
+        "-=30"
       )
       .fromTo(
         "#bubbleship",
-        40,
+        34.5,
         {
           xPercent: -40,
           yPercent: -40,
@@ -60,32 +83,9 @@ const WayToMars = ({ tl, animStart }) => {
           },
           immediateRender: true
         },
-        "-=40"
+        "-=34.5"
       )
 
-      .to(
-        "#first.orbit",
-        {
-          duration: 40.25,
-          rotation: -195,
-          ease: "linear",
-          immediateRender: true
-        },
-        "-=40"
-      )
-      .to(
-        "#second.orbit",
-        {
-          duration: 33.35,
-          rotation: 8,
-          ease: "linear",
-          immediateRender: true,
-          onComplete: () => {
-            toggleNextAnim();
-          }
-        },
-        "-=40"
-      )
       .set(".universe", {
         autoAlpha: 0
       });
