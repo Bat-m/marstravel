@@ -145,47 +145,75 @@ image {
 }
 
 /* CSS talk bubble */
+
 .talk-bubble {
-  margin: 40px;
-  display: inline-block;
-  position: relative;
+  background-color: black;
+  background-image: radial-gradient(rgba(0, 150, 0, 0.75), black 120%);
   width: 300px;
   height: auto;
-  background-color: lightyellow;
+  margin: 0;
+  overflow: hidden;
+  padding: 1rem;
+  text-shadow: 0 0 5px #c8c8c8;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(black, 0.15),
+      rgba(black, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+  }
+}
+::selection {
+  background: #0080ff;
+  text-shadow: none;
 }
 
 .talktext {
-  font-size: 2em;
+  font-size: 1.8em;
 }
 .border {
-  border: 8px solid #666;
+  border: 2px solid darkgrey;
 }
 .round {
-  border-radius: 30px;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
 }
 
 /* DEMO-SPECIFIC STYLES */
 .talktext p {
-  color: black;
+  color: white;
   font-family: "Work Sans", sans-serif;
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  /* border-right: 0.15em solid orange; The typwriter cursor */
-  white-space: wrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: 0.15em; /* Adjust as needed */
-  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
+  overflow: hidden;
+  margin: 0 auto;
+  text-decoration: blink;
+  /* animation: blink 2s linear infinite; */
+  text-shadow: 0 0px 5px #c8c8c8;
 }
 
 /* The typing effect */
-@keyframes typing {
+@keyframes blink {
   from {
-    width: 0;
-    height: 0;
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  50.5% {
+    opacity: 1;
+  }
+  51% {
+    opacity: 0;
   }
   to {
-    width: 200px;
-    height: 200px;
+    opacity: 1;
   }
 }

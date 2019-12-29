@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../assets/stylesheets/WayToMars.css";
+import "../assets/stylesheets/WayToMars.scss";
 import rocket from "../assets/gif/spaceship.gif";
 import { OnMars } from "./OnMars";
 
@@ -71,7 +71,7 @@ const WayToMars = ({ tl, animStart }) => {
         "#bubbleship",
         34.5,
         {
-          xPercent: -40,
+          xPercent: -25,
           yPercent: -40,
           transformOrigin: "50% 50%",
           scale: 0.5,
