@@ -6,13 +6,17 @@ import "../assets/stylesheets/Intro.css";
 
 const Intro = ({ tl }) => {
   const [animStart, setAnimStart] = useState(false);
+  const [titleIntro, setTitleIntro] = useState(true);
 
   const tsa = function toggleStartAnim() {
     setAnimStart(true);
   };
   useEffect(() => {
     if (!animStart) {
-      tl.set(".intro-container", { autoAlpha: 1 })
+      tl.set(".intro-container", {
+        autoAlpha: 1,
+        onStart: () => setTitleIntro(false)
+      })
 
         .fromTo(
           "#takeoff",
@@ -47,7 +51,7 @@ const Intro = ({ tl }) => {
   return (
     <div>
       {/* Start intro */}
-
+      {titleIntro && <h1 className="title"> A journey to Mars </h1>}
       <div className="intro-container">
         {/* start takeoff */}
         <div id="spaceshiphop" className="container-spaceship">
