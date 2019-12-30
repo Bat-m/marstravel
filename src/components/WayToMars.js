@@ -2,17 +2,29 @@ import React, { useEffect, useState } from "react";
 import "../assets/stylesheets/WayToMars.scss";
 import rocket from "../assets/gif/spaceship.gif";
 import { OnMars } from "./OnMars";
+import { BubbleTalk } from "./BubbleTalk";
 
 const WayToMars = ({ tl, animStart }) => {
   const [nextAnim, setNextAnim] = useState(false);
+
+  let stringsWayToMars = [
+    "Houston, Everything looks fine, Mars is on the way !!!",
+    "Ok Mars 13, you should check motor engine",
+    "Houston, motor check",
+    "...",
+    "wait",
+    "we got an issue",
+    "Houston ?",
+    "Do you copy ?!",
+    "we lose control",
+    "motor doesn't respond"
+  ];
 
   const toggleNextAnim = () => {
     setNextAnim(true);
   };
 
   useEffect(() => {
-    console.log("waytomars > animStart: ", animStart);
-
     tl.set(".universe", {
       autoAlpha: 1
     })
@@ -135,13 +147,7 @@ const WayToMars = ({ tl, animStart }) => {
             </g>
             <g id="bubbleship">
               <foreignObject id="plop">
-                <div className="talk-bubble tri-right border round btm-left-in">
-                  <div className="talktext">
-                    <p>
-                      HOUSTON, Everything looks fine, Mars is on the way !!!
-                    </p>
-                  </div>
-                </div>
+                <BubbleTalk string={stringsWayToMars} />
               </foreignObject>
             </g>
           </svg>

@@ -1,0 +1,54 @@
+/* CSS talk bubble */
+
+.talk-bubble {
+  background-color: black;
+  background-image: radial-gradient(rgba(0, 150, 0, 0.75), black 120%);
+  width: 300px;
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  padding: 1rem;
+  text-shadow: 0 0 5px #c8c8c8;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(black, 0.15),
+      rgba(black, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+  }
+}
+::selection {
+  background: #0080ff;
+  text-shadow: none;
+}
+
+.talktext {
+  font-size: 1.8em;
+}
+.border {
+  border: 2px solid darkgrey;
+}
+.round {
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+}
+
+/* DEMO-SPECIFIC STYLES */
+.talktext p {
+  color: white;
+  font-family: "Work Sans", sans-serif;
+  overflow: hidden;
+  margin: 0 auto;
+  text-decoration: blink;
+  /* animation: blink 2s linear infinite; */
+  text-shadow: 0 0px 5px #c8c8c8;
+}
