@@ -9,7 +9,7 @@ const WayToMars = ({ tl, animStart }) => {
 
   let stringsWayToMars = [
     "Houston, Everything looks fine, Mars is on the way !!!",
-    "Ok Mars 13, you should check motor engine",
+    "Ok Mars One, you should check motor engine",
     "Houston, motor check",
     "...",
     "wait",

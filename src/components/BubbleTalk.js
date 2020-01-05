@@ -1,21 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { gsap } from "gsap/all";
 import Typed from "typed.js";
 import "../assets/stylesheets/BubbleTalk.scss";
 
 export const BubbleTalk = ({ ...strings }) => {
-  console.log(strings.string);
+  const [paused, setPaused] = useState(false);
   var options = {
     strings: strings.string,
     typeSpeed: 40,
     backSpeed: 0,
-    cursorChar: "..",
+    cursorChar: "",
     fadeOut: true,
     smartBackspace: true
   };
 
+  setInterval(() => {
+    setPaused(gsap.globalTimeline.paused());
+  }, 500);
+
   useEffect(() => {
-    new Typed(".typed", options);
-  }, [options]);
+    let typed = new Typed(".typed", options);
+    paused ? typed.stop() : typed.start();
+
+    return () => {
+      typed.stop();
+    };
+  });
   return (
     <div>
       <div className="talk-bubble tri-right border round btm-left-in">

@@ -14,7 +14,7 @@ const App = () => {
   //   // currentTimeScale = gsap.globalTimeline.time();
   //   var currentTimeScale = gsap.globalTimeline.timeScale(); //gets current timeScale
   // };
-  const tl = new TimelineMax({ repeat: 0, yoyo: false });
+  const tl = new TimelineMax({});
   return (
     <div className="App" id="intro-bg">
       {/* <OnMars tl={tl} /> */}
